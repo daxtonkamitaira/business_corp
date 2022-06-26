@@ -4,59 +4,73 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
 const options = {
-
     chart: {
         height: '360px',
-        type: 'column'
+        type: 'column',
+        style: {
+            fontFamily: `'Blinker', sans-serif`,
+        }
     },
-
     title: {
-        text: 'Total fruit consumption, grouped by gender'
+        text: 'Revenue by Product'
     },
-
     xAxis: {
-        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+        categories: [
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
+        ]
     },
-
     yAxis: {
-        allowDecimals: false,
         min: 0,
+        reversedStacks: false,
         title: {
-            text: 'Number of fruits'
+            text: 'Billions of Dollars'
         }
     },
-
     tooltip: {
-        formatter: function () {
-            return '<b>' + this.x + '</b><br/>' +
-                this.series.name + ': ' + this.y + '<br/>' +
-                'Total: ' + this.point.stackTotal;
-        }
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+        shared: true
     },
-
     plotOptions: {
+        series: {
+            borderWidth: 0,
+        },
         column: {
-            stacking: 'normal'
+            stacking: 'percent'
         }
     },
-
-    series: [{
-        name: 'John',
-        data: [5, 3, 4, 7, 2],
-        stack: 'male'
-    }, {
-        name: 'Joe',
-        data: [3, 4, 4, 2, 5],
-        stack: 'male'
-    }, {
-        name: 'Jane',
-        data: [2, 5, 6, 2, 1],
-        stack: 'female'
-    }, {
-        name: 'Janet',
-        data: [3, 0, 4, 4, 3],
-        stack: 'female'
-    }]
+    series: [
+        {
+            name: 'Phones',
+            data: [5, 3, 4, 7, 2],
+            color: '#149947'
+        }, 
+        {
+            name: 'Services',
+            data: [2, 2, 3, 2, 1],
+            color: '#1DDA65'
+        }, 
+        {
+            name: 'Laptops',
+            data: [3, 4, 4, 2, 5],
+            color: '#5CF396'
+        },
+        {
+            name: 'Tablets',
+            data: [3, 4, 4, 2, 5],
+            color: '#C1FAD7'
+        }
+    ]
 }
 
 function Chart() {
