@@ -2,14 +2,15 @@ import Brand from "./Brand";
 import { Container } from "./Container";
 import { GlobalStyle } from "./GlobalStyle";
 import { Card } from "./Card";
+import Chart from "./Chart";
 
 function Dashboard() {
     return (
         <>
             <GlobalStyle/>
             <Container>
-                <Brand/>
-                <Card height={400}> Chart goes here </Card>
+                <Brand />
+                <Chart />
                 <Card height={400}> Table goes here </Card>
             </Container>
         </>
